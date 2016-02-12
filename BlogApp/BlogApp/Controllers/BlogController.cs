@@ -5,10 +5,12 @@ using System.Web.Mvc;
 
 namespace BlogApp.Controllers
 {
+    [Authorize]
     public class BlogController : Controller
     {
         BlogDataContext _db = new BlogDataContext();
 
+        [AllowAnonymous]
         public ActionResult Index() 
         {
             var blogs = _db.Blogs.ToList();
@@ -32,12 +34,14 @@ namespace BlogApp.Controllers
             return View(blog);
         }
 
+        [AllowAnonymous]
         public ActionResult Blog(int id)
         {
             var blog = _db.Blogs.Find(id);
             return View(blog);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Blog(int id, Comment newComment)
         {

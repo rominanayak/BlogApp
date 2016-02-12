@@ -1,0 +1,30 @@
+﻿@model BlogApp.Models.Blog
+
+@{
+    ViewBag.Title = "Blog";
+}
+
+<h2>@Model.Title</h2>
+<p>@Model.Summary</p>
+<p>@Model.Body</p>
+
+<hr />
+<h4>Comments</h4>
+@foreach (var comment in Model.Comments)
+{
+    <div class="comment">
+        <small>@comment.DateTime | @comment.UserName</small>
+        <p>@comment.Body</p>
+    </div>
+}
+
+<hr />
+@using(Html.BeginForm())
+{
+    <p>Name: @Html.TextBox("NewComment.UserName")</p>
+    <p>Text:   @Html.TextArea("NewComment.Body")</p>
+    <p><input type="submit" value="Submit"/></p>
+}
+
+
+@Html.ActionLink("Back to List", "Index")

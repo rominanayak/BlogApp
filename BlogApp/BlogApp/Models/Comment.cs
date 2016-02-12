@@ -6,16 +6,14 @@ namespace BlogApp.Models
     public class Comment
     {
         [ScaffoldColumn(false)]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        [ScaffoldColumn(false)]
         public Blog blog { get; set; }
 
         [ScaffoldColumn(false)]
-        public DateTime CreatedOn { get; set; }
+        public DateTime DateTime { get; set; }
 
         [Required]
-        [Display(Name = "User Name")]
         public string UserName { get; set; }
 
         [Required]
@@ -23,7 +21,7 @@ namespace BlogApp.Models
 
         public Comment()
         {
-            CreatedOn = DateTime.Now;
+            DateTime = DateTime.Now;
         }
     }
 }

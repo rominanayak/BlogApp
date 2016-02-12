@@ -1,21 +1,20 @@
 ﻿@model IEnumerable<BlogApp.Models.Blog>
 
 @{
-    ViewData["Title"] = "Blogs";
+    ViewBag.Title = "Blogs";
 }
 
 <h2>Blog Gallery</h2>
 
 <p>
-    <a asp-action="Create">Create New Blog</a>
+    @Html.ActionLink("Create New Blog", "Create")
 </p>
-
 
 @foreach (var item in Model)
 {
     <hr />
-    <h3><a href="@Url.Action("Blog", new { Id = item.Id })">@item.Title</a></h3>
-    <small>@item.PostedOn</small>
-    <p>@item.Summary</p>
-
+    <h3><a href="@Url.Action("Blog", new { Id = item.Id })">@Html.DisplayFor(modelItem => item.Title)</a></h3>
+    <small>@Html.DisplayFor(modelItem => item.PostedOn)</small>
+    <p>@Html.DisplayFor(modelItem => item.Summary)</p>
 }
+

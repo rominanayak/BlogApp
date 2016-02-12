@@ -1,5 +1,6 @@
 ﻿using BlogApp.Models;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -68,8 +69,9 @@ namespace BlogApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Blogs.Add(blog);
+                _db.Entry(blog).State = EntityState.Modified;
                 _db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
             return View(blog);

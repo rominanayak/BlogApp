@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace bloggingPortal.Models
+namespace BlogApp.Models
 {
     public class Comment
     {

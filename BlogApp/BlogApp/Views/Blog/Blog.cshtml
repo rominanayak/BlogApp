@@ -27,4 +27,5 @@
 }
 
 
-@Html.ActionLink("Back to List", "Index")
+@Html.ActionLink("Back to List", "Index") | 
+<a href="@Url.Action("Edit", new { Id = Model.Id })">Edit this Blog</a>

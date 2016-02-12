@@ -41,7 +41,7 @@ namespace BlogApp.Controllers
             return View(blog);
         }
 
-        [AllowAnonymous]
+        
         [HttpPost]
         public ActionResult Blog(int id, Comment newComment)
         {
@@ -52,7 +52,8 @@ namespace BlogApp.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Blog", new { Id = id });
             }
-            return Blog(id);
+            var blog = _db.Blogs.Find(id);
+            return View(blog);
         }
 
 
